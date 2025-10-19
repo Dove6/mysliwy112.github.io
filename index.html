@@ -10,7 +10,7 @@
         <link rel="stylesheet" href="style.css">
     </head>
 
-    <body onload="initCanvas()">
+    <body onload="ANN.initCanvas()">
 
         <div class="leftCol">
             <h1>Files</h1>
@@ -25,9 +25,9 @@
         <div id="player">
             <div>
                 <label for="width">width</label>
-                <input type="number" name="width" id="canvasWidth" value="800" onchange={resizeCanvas(this.value,null)}>
+                <input type="number" name="width" id="canvasWidth" value="800" onchange="ANN.resizeCanvas(this.value, null)">
                 <label for="height">height</label>
-                <input type="number" name="height" id="canvasHeight" value="600" onchange={resizeCanvas(null,this.value)}>
+                <input type="number" name="height" id="canvasHeight" value="600" onchange="ANN.resizeCanvas(null, this.value)">
             </div>
             <div class="screenContainer">
             <canvas id="screen" width=800 height=600>
@@ -35,22 +35,22 @@
             </canvas>
             <div id="playButtons">
                 <label for="center">center</label>
-                <input type="checkbox" name="center" id="centerCheck" onclick=changeFrame()>
-                <button type="button" onclick="playB()">Back</button> 
-                <button type="button" onclick="pause()">Pause</button> 
-                <button type="button" onclick="play()">Play</button> 
+                <input type="checkbox" name="center" id="centerCheck" onclick="ANN.changeFrame()">
+                <button type="button" onclick="ANN.playB()">Back</button> 
+                <button type="button" onclick="ANN.pause()">Pause</button> 
+                <button type="button" onclick="ANN.play()">Play</button> 
                 <div class="allBtns">
-                    <button type="button" onclick="{pause();drawMultipleFrames(pAnn)}">All</button> 
-                    <button type="button" onclick="{pause();drawMultipleEvents(pAnn)}">All S.</button> 
+                    <button type="button" onclick="{ANN.pause(); ANN.drawMultipleFrames();}">All</button> 
+                    <button type="button" onclick="{ANN.pause(); ANN.drawMultipleEvents();}">All S.</button> 
                 </div>
                 <label for="loop">loop</label>
-                <input type="checkbox" name="loop" id="loopCheck" onclick=changeFrame()>
+                <input type="checkbox" name="loop" id="loopCheck" onclick="ANN.changeFrame()">
             </div>
             <div id="download_button">
-                <button type="button" onclick="saveGif(pAnn)">Save Gif</button> 
-                <button type="button" onclick="saveSequence(pAnn)">Save Sequence</button> 
-                <button type="button" onclick="saveAnn(pAnn)" style="display: none;">Save ANN</button> 
-                <button type="button" onclick="saveFiles(pAnn)">Save Images</button> 
+                <button type="button" onclick="ANN.saveGif()">Save Gif</button> 
+                <button type="button" onclick="ANN.saveSequence()">Save Sequence</button> 
+                <button type="button" onclick="ANN.saveAnn()" style="display: none;">Save ANN</button> 
+                <button type="button" onclick="ANN.saveFiles()">Save Images</button> 
             </div>
             <div id="frames">
             </div>
@@ -59,7 +59,7 @@
         <div class="rightCol">
             <h1>Events</h1>
             <ul id="events" class="scrollBox">
-                
+
             </ul>
         </div>
 
