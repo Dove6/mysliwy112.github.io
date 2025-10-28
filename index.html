@@ -6,6 +6,8 @@
         <script type="text/javascript" src="lib/jsgif/GIFEncoder.js"></script>
         <script type="text/javascript" src="lib/jszip.js"></script>
         <script type="text/javascript" src="lib/FileSaver.js"></script>
+        <script src="lib/ann.js"></script>
+        <script src="lib/index.js"></script>
         <link rel="stylesheet" href="style.css">
     </head>
 
@@ -61,7 +63,18 @@
             </ul>
         </div>
     </body>
-    <script src="lib/ann.js"></script>
-    <script src="lib/index.js"></script>
-    <script src="lib/main.js"></script>
+    <script>
+        (async () => {
+            const files = await (await fetch('index.json')).json();
+            const fileIndex = new FileIndex(document.getElementById('filesys'), files);
+            ANN.initCanvas();
+            var params = new URLSearchParams(window.location.search);
+            if (params.get('file') != undefined) {
+                await ANN.initAnn(params.get('file'));
+                if (params.get('event') != undefined) {
+                    ANN.changeEvent(params.get('event'));
+                }
+            }
+        })();
+    </script>
 </html>
